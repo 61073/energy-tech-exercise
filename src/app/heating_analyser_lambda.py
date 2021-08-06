@@ -1,5 +1,6 @@
 import logging
 
+from src.app.data_calculator import DataCalculator
 from src.app.utils import generate_response
 
 logger = logging.getLogger(__name__)
@@ -82,11 +83,15 @@ def lambda_handler(event, context):
             raise Exception("Provided event object not a list, required to provide house details")
 
         records = event
-        # TODO - Process records in methods outside this file
-        success_records = []
-        processed_message = f"Successfully processed {len(success_records)} house heat details"
+        output_string = ""
+        for house_data in records:
+            calc_obj = DataCalculator(house_data)
+            results_string = calc_obj.process_results()
+            output_string += results_string + "\n"
+        processed_message = f"Successfully processed {len(records)} house heat details"
         logger.info(processed_message)
-        response = generate_response(200, 200, processed_message, event)
+        logger.info(output_string)
+        response = generate_response(200, 200, processed_message, output_string)
         return response
 
     except Exception as exception:
@@ -138,4 +143,5 @@ if __name__ == '__main__':
             "insulationFactor": 1.7
         }
     ]
-    lambda_handler(event_example, None)
+    response = lambda_handler(event_example, None)
+    print(response)

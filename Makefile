@@ -18,5 +18,5 @@ covhtml: requirements
 	echo "\n=========> HTML coverage report created and opened in firefox"
 
 start: requirements
-	@echo "\n=====> Running Main Application..."
-	PYTHONPATH=$(PYTHONPATH):src/app python main.py
+	@echo "\n=====> Running Lambda..."
+	PYTHONPATH=$(PYTHONPATH):src/app python heating_analyser_lambda.py
