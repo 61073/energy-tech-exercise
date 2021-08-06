@@ -1,10 +1,11 @@
 import os
+import requests
+import json
+
 from unittest import TestCase
 from unittest.mock import patch
 from nose2.tools import params
-from src.app.house_heating_analyser import lambda_handler
-import requests
-import json
+from src.app.heating_analyser_lambda import lambda_handler
 
 
 class TestHouseHeatingAnalyser(TestCase):

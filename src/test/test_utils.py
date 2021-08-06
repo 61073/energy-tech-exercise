@@ -1,7 +1,5 @@
 from unittest import TestCase
-
 from nose2.tools import params
-
 from src.app.utils import generate_response
 
 

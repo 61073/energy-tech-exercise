@@ -48,7 +48,7 @@ def lambda_handler(event, context):
                 {
                     "statusCode": 200,
                     "headers": {
-                        "Content-Type": "application/json",
+                        "Content-Type": "application/json"
                     },
                     "body": "{'status': 200, 'message': 'Successfully processed 6 customer house heat details', 
                     'body':
@@ -76,6 +76,11 @@ def lambda_handler(event, context):
     logger.info(f"input event: {event}")
 
     try:
+        if event is None:
+            raise Exception("No Event object found, required to provide house details")
+        if type(event) is not list:
+            raise Exception("Provided event object not a list, required to provide house details")
+
         records = event
         # TODO - Process records in methods outside this file
         success_records = []
