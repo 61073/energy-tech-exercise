@@ -1,7 +1,7 @@
 import requests
 
 
-def get_weather_data(location):
+def get_weather_degree_days(location):
     """
 
     :param location:
