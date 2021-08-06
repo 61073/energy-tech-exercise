@@ -1,0 +1,23 @@
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+__pycache__
+.pytest_cache
+test/report/*
+.idea
+nose2-junit.xml
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+mypython/
+.python-version
